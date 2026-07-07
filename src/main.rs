@@ -5,7 +5,7 @@ fn main() {
     println!("Guess the number!");
 
     let secret = rand::random_range(1..=100);
-    let mut guessCount = 0;
+    let mut guess_count = 0;
     loop {
         println!("Please input your guess.");
     
@@ -15,7 +15,7 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read the line");
     
-        guessCount += 1;
+        guess_count += 1;
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => {
@@ -32,12 +32,12 @@ fn main() {
             Ordering::Greater => println!("Too big!"),
             Ordering::Equal => {
                 println!("You win! 🎉");
-                println!("You won in {guessCount} tries!");
+                println!("You won in {guess_count} tries!");
                 break;
             } 
         }
 
-        if guessCount > 7 {
+        if guess_count > 7 {
             println!("You lost, secret was {secret}");
             break;
         }   
